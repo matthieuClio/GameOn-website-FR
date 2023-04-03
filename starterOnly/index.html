@@ -60,8 +60,9 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
+              id="mainForm"
+              
+            > <!-- onsubmit="return validate();" was in form as attribut-->
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
@@ -70,10 +71,14 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                  required
                 /><br>
+                <!-- minlength="2"
+                required -->
               </div>
+              <!-- Error message : first name -->
+              <div class="error smFont">
+              </div>
+
               <div
                 class="formData">
                 <label for="last">Nom</label><br>
@@ -82,10 +87,15 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
-                  required
+                  
                 /><br>
+                <!-- minlength="2"
+                required -->
               </div>
+              <!-- Error message : last name -->
+              <div class="error smFont">
+              </div>
+
               <div
                 class="formData">
                 <label for="email">E-mail</label><br>
@@ -94,9 +104,12 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
                 /><br>
               </div>
+              <!-- Error message : email -->
+              <div class="error smFont">
+              </div>
+
               <div
                 class="formData">
                 <label for="birthdate">Date de naissance</label><br>
@@ -107,21 +120,26 @@
                   name="birthdate"
                 /><br>
               </div>
+              <!-- Error message : date of birth -->
+              <div class="error smFont">
+              </div>
+
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input 
-
                   type="number" 
-                  inputmode="numeric"
                   class="text-control" 
                   id="quantity" 
-                  name="quantity" 
+                  name="quantity"
                   min="0" 
                   max="99"
-                  required
                   >
               </div>
+              <!-- Error message : number of tournement -->
+              <div class="error smFont">
+              </div>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData">
@@ -131,7 +149,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -193,6 +210,9 @@
                   Portland</label
                 >
               </div>
+              <!-- Error message : specific tournement -->
+              <div class="error smFont">
+              </div>
 
               <div
                 class="formData">
@@ -208,11 +228,18 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input 
+                  class="checkbox-input" 
+                  type="checkbox" 
+                  id="checkbox2" 
+                />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
+                <!-- Error message : terms of use -->
+                <div class="error smFont">
+                </div>
                 <br>
               </div>
               <input

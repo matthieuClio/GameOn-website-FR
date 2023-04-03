@@ -1,7 +1,7 @@
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const modalBtnClose = document.querySelector(".close");
+const modalBtnClose = document.getElementById("closeModal");
 const formData = document.querySelectorAll(".formData");
 const formContainer = document.getElementById("mainForm");
 const formInputFirstName = document.getElementById("first");
@@ -11,6 +11,9 @@ const formInputDateOfBirth = document.getElementById("birthdate");
 const formInputNumberOfTournement = document.getElementById("quantity");
 const formInputSpecificTounement = document.querySelectorAll('input[name="location"]');
 const formInputTermsOfUse = document.getElementById("checkbox1");
+const modalValidation = document.querySelector(".background-validation");
+const modalBtnValidation = document.querySelector(".boutton-validation");
+const modalBtnCloseValidation = document.getElementById("closeModalValidation");
 const errorContainer = document.querySelectorAll(".error");
 
 // Variable
@@ -21,7 +24,6 @@ let errorVerification;
 // .........
 
 function editNav() {
-
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
@@ -39,6 +41,18 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// Launch modal validation
+function launchModalValidation() {
+  modalValidation.style.display = "block";
+}
+
+// Close modal validation
+function closeModalValidation() {
+  modalValidation.style.display = "none";
+}
+
+launchModalValidation();
 
 // Check first name
 function checkName(formInput, errorContainer) {
@@ -175,11 +189,13 @@ function checkTermsOfUse(formInput, errorContainer) {
 }
 
 function checkError(form) {
+
   if (!errorVerification) {
-    console.log('envoie du formulaire');
-    
+    // Reset and close the modal
     form.reset();
     closeModal();
+    // Display modal validation
+    launchModalValidation();
   }
 }
 
@@ -192,6 +208,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close modal event
 modalBtnClose.addEventListener("click", closeModal);
+
+// Close modal validation event
+modalBtnCloseValidation.addEventListener("click", closeModalValidation);
+
+// Boutton modal validation event
+modalBtnValidation.addEventListener("click", closeModalValidation);
+
 
 // Submit button event
 formContainer.addEventListener("submit", (evenement) => {

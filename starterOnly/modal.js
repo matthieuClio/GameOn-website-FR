@@ -52,8 +52,6 @@ function closeModalValidation() {
   modalValidation.style.display = "none";
 }
 
-launchModalValidation();
-
 // Check first name
 function checkName(formInput, errorContainer) {
 

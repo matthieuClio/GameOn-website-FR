@@ -241,8 +241,6 @@ formContainer.addEventListener("submit", (evenement) => {
   
   // Error verification :
   checkError(formContainer);
-
-  // Fonction qui permet de vider le formulaire (existe déjà) si le formulaire est validé
 });
 
   

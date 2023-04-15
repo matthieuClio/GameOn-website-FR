@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
   </head>
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png">
+        <!-- <img alt="logo" src="Logo.png" width="auto" height="auto" /> -->
+      </div>
+      <div class="main-navbar">
+        
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -45,7 +44,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./bg_img.jpg" alt="img">
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -85,7 +84,7 @@
                   type="text"
                   id="first"
                   name="first"
-                /><br>
+                ><br>
                 <!-- minlength="2"
                 required -->
               </div>
@@ -102,7 +101,7 @@
                   id="last"
                   name="last"
                   
-                /><br>
+                ><br>
                 <!-- minlength="2"
                 required -->
               </div>
@@ -118,7 +117,7 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                ><br>
               </div>
               <!-- Error message : email -->
               <div class="error smFont">
@@ -132,7 +131,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                ><br>
               </div>
               <!-- Error message : date of birth -->
               <div class="error smFont">
@@ -163,7 +162,7 @@
                   id="location1"
                   name="location"
                   value="New York"
-                />
+                >
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label
@@ -174,7 +173,7 @@
                   id="location2"
                   name="location"
                   value="San Francisco"
-                />
+                >
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
                   San Francisco</label
@@ -185,7 +184,7 @@
                   id="location3"
                   name="location"
                   value="Seattle"
-                />
+                >
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
                   Seattle</label
@@ -196,7 +195,7 @@
                   id="location4"
                   name="location"
                   value="Chicago"
-                />
+                >
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
                   Chicago</label
@@ -207,7 +206,7 @@
                   id="location5"
                   name="location"
                   value="Boston"
-                />
+                >
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Boston</label
@@ -218,7 +217,7 @@
                   id="location6"
                   name="location"
                   value="Portland"
-                />
+                >
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
@@ -236,7 +235,7 @@
                   id="checkbox1"
                   name="checkbox-conditions"
                   checked
-                />
+                >
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
@@ -246,7 +245,7 @@
                   class="checkbox-input" 
                   type="checkbox" 
                   id="checkbox2" 
-                />
+                >
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
@@ -257,11 +256,10 @@
                 <br>
               </div>
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 type="submit"
-                class="button"
                 value="C'est parti"
-              />
+              >
             </form>
           </div>
         </div>

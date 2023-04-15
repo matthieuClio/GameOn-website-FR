@@ -213,6 +213,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
+  /* overflow-y: hidden; */
   background-color: rgba(26, 39, 156, 0.4);
 }
 
@@ -233,6 +234,7 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  /* overflow-y: scroll; */
 }
 
 label {

@@ -1,4 +1,5 @@
 // DOM Elements
+const divElement = document.querySelector("body");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.getElementById("closeModal");
@@ -16,9 +17,6 @@ const modalBtnValidation = document.querySelector(".boutton-validation");
 const modalBtnCloseValidation = document.getElementById("closeModalValidation");
 const errorContainer = document.querySelectorAll(".error");
 
-// Variable
-let errorVerification;
-
 // .........
 // Functions
 // .........
@@ -35,21 +33,25 @@ function editNav() {
 // Launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  divElement.style.overflow = "hidden";
 }
 
 // Close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  divElement.style.overflow = "auto";
 }
 
 // Launch modal validation
 function launchModalValidation() {
   modalValidation.style.display = "block";
+  divElement.style.overflow = "hidden";
 }
 
 // Close modal validation
 function closeModalValidation() {
   modalValidation.style.display = "none";
+  divElement.style.overflow = "auto";
 }
 
 // Check first name
@@ -61,18 +63,16 @@ function checkName(formInput, errorContainer) {
 
   if (formInput.value.length <= 1) {
     errorContainer.innerHTML = "Veuillez entrer 2 caractères ou plus";
-    errorVerification = true;
   } 
-  
   else if (result) {
     errorContainer.innerHTML = "Veuillez entrer uniquement des lettres";
-    errorVerification = true;
+  }
+  else {
+    errorContainer.innerHTML = "";
+    return true;
   }
 
-  if (!result && formInput.value.length >= 2) {
-    // console.log(formInput.value);
-    errorContainer.innerHTML = "";
-  }
+  return false;
 }
 
 // Check email
@@ -83,12 +83,12 @@ function checkEmail(formInput, errorContainer) {
   
   if (!result) {
     errorContainer.innerHTML = "Veuillez entrer une adresse email valide";
-    errorVerification = true;
+    return false;
   }
 
   if (result) {
-    // console.log(formInput.value);
     errorContainer.innerHTML = ""
+    return true;
   }
 }
 
@@ -113,7 +113,7 @@ function checkDateOfBirth(formInput, errorContainer) {
 
   // Verify minDate and maxDate with the input year
   if (result && Number(formInputYear[1]) >= minDate && Number(formInputYear[1]) < maxDate) {
-    // console.log(formInputYear[1]);
+    return true;
   }  
 
   // Verify current date is the same than the input
@@ -123,19 +123,19 @@ function checkDateOfBirth(formInput, errorContainer) {
     if (currentFullDate[1] >= Number(formInputYear[2]) && currentFullDate[2] >= Number(formInputYear[3]) || 
       currentFullDate[1] > formInputYear[2]) {
 
-      // console.log(Number(formInputYear[2]) + ' ' + Number(formInputYear[3]));
       errorContainer.innerHTML = "";
+      return true;
     } 
     
     else {
       errorContainer.innerHTML = "La date entrée est suppérieure à la date du jour";
-      errorVerification = true;
+      return false;
     }
   } 
   
   else {
     errorContainer.innerHTML = "Veuillez vérifier la date de naissance";
-    errorVerification = true;
+    return false;
   }
 }
 
@@ -146,12 +146,12 @@ function checkNumberOfTournement(formInput, errorContainer) {
 
   if (result) {
     errorContainer.innerHTML = "";
-    // console.log(result);
+    return true;
   }
 
   else {
     errorContainer.innerHTML = "Veuillez vérifier le nombre de tournois";
-    errorVerification = true;
+    return false;
   }
 }
 
@@ -166,12 +166,12 @@ function checkSpecificTournement(formInput, errorContainer) {
   }
 
   if (isChecked) {
-    // console.log(isChecked);
     errorContainer.innerHTML = "";
+    return true;
   }
   else {
     errorContainer.innerHTML = "Veuillez sélectioner un tournois";
-    errorVerification = true;
+    return false;
   }
 }
 
@@ -179,16 +179,17 @@ function checkTermsOfUse(formInput, errorContainer) {
 
   if (formInput.checked) {
     errorContainer.innerHTML = "";
+    return true;
   }
   else {
     errorContainer.innerHTML = "Veuillez accepter les conditions d'utilisations";
-    errorVerification = true;
+    return false;
   }
 }
 
-function checkError(form) {
+function checkError(form, isFormValid) {
 
-  if (!errorVerification) {
+  if (isFormValid) {
     // Reset and close the modal
     form.reset();
     closeModal();
@@ -218,27 +219,33 @@ modalBtnValidation.addEventListener("click", closeModalValidation);
 formContainer.addEventListener("submit", (evenement) => {
   evenement.preventDefault();
 
-  errorVerification = false;
   // Fields verification :
 
   // Check first name
-  checkName(formInputFirstName, errorContainer[0]);
+  let isNameValide = checkName(formInputFirstName, errorContainer[0]);
   // Check last name
-  checkName(formInputName, errorContainer[1]);
+  let isLastNameValide = checkName(formInputName, errorContainer[1]);
   // Check email
-  checkEmail(formInputEmail, errorContainer[2]);
+  let isEmailValid = checkEmail(formInputEmail, errorContainer[2]);
   // Check date of birth
-  checkDateOfBirth(formInputDateOfBirth, errorContainer[3]);
+  let isDateOfBirthValid = checkDateOfBirth(formInputDateOfBirth, errorContainer[3]);
   // Check number of tournement
-  checkNumberOfTournement(formInputNumberOfTournement, errorContainer[4]);
+  let isNumberOfTournementValid = checkNumberOfTournement(formInputNumberOfTournement, errorContainer[4]);
   // Check specific tournement
-  checkSpecificTournement(formInputSpecificTounement, errorContainer[5]);
+  let isSpecificTournementValid = checkSpecificTournement(formInputSpecificTounement, errorContainer[5]);
   // Check terms of use
-  checkTermsOfUse(formInputTermsOfUse, errorContainer[6]);
-  console.log(errorVerification);
+  let isTermsOfUseValid = checkTermsOfUse(formInputTermsOfUse, errorContainer[6]);
   
   // Error verification :
-  checkError(formContainer);
+  checkError(formContainer, 
+            isNameValide && 
+            isLastNameValide && 
+            isEmailValid &&
+            isDateOfBirthValid &&
+            isNumberOfTournementValid &&
+            isSpecificTournementValid &&
+            isTermsOfUseValid
+            );
 });
 
   
